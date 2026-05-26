@@ -1,0 +1,6 @@
+{
+  "name": "Lumina Cafe",
+  "description": "A modern, minimalistic website for a coffee shop and bakery featuring a cinematic product reveal sequence and frosted glass design elements.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
