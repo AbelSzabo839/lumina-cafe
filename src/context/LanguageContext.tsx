@@ -16,12 +16,12 @@ const translations = {
     'nav.cake': 'Torta',
     'nav.brunch': 'Brunch',
     'nav.menu': 'Menü',
-    'nav.contact': 'Kontakt',
+    'nav.contact': 'Kapcsolat',
     'nav.gallery': 'Galéria',
     
-    'hero.title': 'A Te helyed,',
-    'hero.subtitle': 'a Te kávéd.',
-    'hero.desc': 'Lépj be hozzánk és érezd magad otthon. Szívvel-lélekkel készített italok és házi sütemények várnak, egy mosoly kíséretében.',
+    'hero.title': 'Kávélabor',
+    'hero.subtitle': 'Specialty coffee élmény.',
+    'hero.desc': 'Mérleg tér 4, Zalaegerszeg. Minőségi kávé, barátságos hangulat és gondosan elkészített italok minden nap.',
     
     'reveal.title': 'Kávé',
     'reveal.subtitle': 'Anatómiája',
@@ -64,9 +64,9 @@ const translations = {
     'nav.contact': 'Contact',
     'nav.gallery': 'Gallery',
     
-    'hero.title': 'Your place,',
-    'hero.subtitle': 'your coffee.',
-    'hero.desc': 'Step in and feel at home. Drinks made with heart and soul, along with homemade cakes, await you with a smile.',
+    'hero.title': 'Kávélabor',
+    'hero.subtitle': 'Specialty coffee experience.',
+    'hero.desc': 'Mérleg tér 4, Zalaegerszeg. Quality coffee, friendly atmosphere, and carefully crafted drinks every day.',
     
     'reveal.title': 'Anatomy',
     'reveal.subtitle': 'of Coffee',

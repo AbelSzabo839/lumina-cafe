@@ -1,6 +1,10 @@
 import { motion } from 'motion/react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function About() {
+  const { lang } = useLanguage();
+  const isHu = lang === 'HU';
+
   return (
     <section id="about" className="scroll-mt-24 py-20 md:py-28 bg-black">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -15,35 +19,39 @@ export default function About() {
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
               <span className="w-2 h-2 rounded-full bg-earth-700/80" />
               <span className="text-[11px] tracking-[0.25em] uppercase font-semibold text-earth-100/70">
-                Our story
+                {isHu ? 'Rólunk' : 'Our story'}
               </span>
             </div>
 
             <h2 className="mt-6 text-4xl md:text-6xl font-serif text-earth-50 leading-tight">
-              Dark roast. Bright moments.
+              {isHu ? 'Sötét pörkölés. Tiszta élmény.' : 'Dark roast. Bright moments.'}
             </h2>
             <p className="mt-4 text-earth-100/70 leading-relaxed max-w-xl">
-              Lumina Cafe is built around craftsmanship: espresso pulled with care, coffee roasted with
-              intention, and desserts made in-house to complete the ritual. Every visit is designed
-              to feel calm, elegant, and personal.
+              {isHu
+                ? 'A Kávélabor a specialty szemléletre épül: gondosan készített eszpresszó, minőségi alapanyagok és barátságos, nyugodt hangulat vár.'
+                : 'Kávélabor is built around craftsmanship: espresso pulled with care, coffee roasted with intention, and desserts made in-house.'}
             </p>
 
             <div className="mt-8 space-y-4">
               <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5">
                 <div className="text-[11px] tracking-widest uppercase font-semibold text-earth-100/65">
-                  Philosophy
+                  {isHu ? 'Filozófia' : 'Philosophy'}
                 </div>
                 <p className="mt-2 text-earth-100/75 leading-relaxed">
-                  We balance intensity with softness — bold flavors, clean finishes, and a warm atmosphere.
+                  {isHu
+                    ? 'Célunk az egyensúly: intenzív ízek, tiszta lecsengés, mégis közvetlen, otthonos élmény.'
+                    : 'We balance intensity with softness — bold flavors, clean finishes, and a warm atmosphere.'}
                 </p>
               </div>
 
               <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5">
                 <div className="text-[11px] tracking-widest uppercase font-semibold text-earth-100/65">
-                  What we serve
+                  {isHu ? 'Szolgáltatások' : 'What we serve'}
                 </div>
                 <p className="mt-2 text-earth-100/75 leading-relaxed">
-                  Espresso classics, seasonal coffee, and a rotating selection of house-made desserts.
+                  {isHu
+                    ? 'Helyben fogyasztás, szabadtéri ülőhelyek és elviteli lehetőség.'
+                    : 'Dine-in, outdoor seating, and takeaway service.'}
                 </p>
               </div>
             </div>
@@ -70,10 +78,10 @@ export default function About() {
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
                     <div className="text-[10px] tracking-[0.25em] uppercase font-bold text-earth-100/70">
-                      Crafted daily
+                      {isHu ? 'Minden nap frissen' : 'Crafted daily'}
                     </div>
                     <div className="mt-2 text-earth-50 font-serif text-2xl">
-                      A quiet bar for bold flavor.
+                      {isHu ? 'Specialty kávé Zalaegerszegen.' : 'A quiet bar for bold flavor.'}
                     </div>
                   </div>
                 </div>
@@ -82,9 +90,18 @@ export default function About() {
 
             <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { label: 'Roasted daily', value: 'Fresh' },
-                { label: 'In-house desserts', value: 'Made' },
-                { label: 'Baristas who care', value: 'Crafted' },
+                {
+                  label: isHu ? 'Nyitvatartás' : 'Opening hours',
+                  value: isHu ? '7:00-14:00' : '7:00-14:00',
+                },
+                {
+                  label: isHu ? 'Elérhetőség' : 'Phone',
+                  value: '+36 30 979 4192',
+                },
+                {
+                  label: isHu ? 'Instagram' : 'Instagram',
+                  value: '@kavelabor',
+                },
               ].map((s) => (
                 <motion.div
                   key={s.label}

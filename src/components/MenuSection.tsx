@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { useMemo, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 type MenuItem = {
   name: string;
@@ -16,57 +17,100 @@ type MenuCategory = {
 };
 
 export default function MenuSection() {
+  const { lang } = useLanguage();
+  const isHu = lang === 'HU';
   const categories = useMemo<MenuCategory[]>(
     () => [
       {
-        id: 'espresso',
-        title: 'Espresso',
-        subtitle: 'Bold, precise, crafted.',
-        note: 'Double-shot energy with silky crema.',
-        items: [
-          { name: 'Espresso', description: 'Short, intense, caramel notes.', price: '3.50' },
-          { name: 'Americano', description: 'Espresso + hot water, clean finish.', price: '4.50' },
-          { name: 'Macchiato', description: 'Espresso marked with velvety foam.', price: '4.90' },
-          { name: 'Cappuccino', description: 'Balanced body with a cloud of foam.', price: '5.30' },
-        ],
-      },
-      {
         id: 'coffee',
-        title: 'Coffee',
-        subtitle: 'Slow-brewed comfort.',
-        note: 'Daily roast, brewed for clarity and depth.',
+        title: isHu ? 'Kávék' : 'Coffee',
+        subtitle: isHu ? 'Kávébár klasszikusok' : 'Coffee bar classics',
+        note: isHu ? 'Az árak forintban értendők.' : 'Prices are in HUF.',
         items: [
-          { name: 'Pour-Over', description: 'Single origin, hand-poured.', price: '6.20' },
-          { name: 'Latte', description: 'Espresso with smooth steamed milk.', price: '5.90' },
-          { name: 'Mocha', description: 'Cocoa + espresso, softly sweet.', price: '6.40' },
-          { name: 'Cold Brew', description: '12-hour steep, naturally sweet.', price: '6.80' },
+          { name: 'Espresso Macchiato', description: '', price: '1400' },
+          { name: 'Cortado', description: '', price: '1400' },
+          { name: 'Cappuccino', description: '', price: '1400' },
+          { name: 'Naked Cappuccino', description: '', price: '1400' },
+          { name: 'Flat White', description: '', price: '1600' },
+          { name: 'Café Latte', description: '', price: '1600' },
+          { name: 'Café Latte Double Shot', description: '', price: '1800' },
+          { name: 'Chai Latte', description: '', price: '1600' },
+          { name: 'Chai Latte + Espresso', description: '', price: '1800' },
+          { name: 'Matcha Latte', description: '', price: '1800' },
         ],
       },
       {
-        id: 'tea',
-        title: 'Tea',
-        subtitle: 'Warm rituals.',
-        note: 'A gentle break between sips.',
+        id: 'breakfast',
+        title: isHu ? 'Reggeli ételek' : 'Breakfast',
+        subtitle: isHu ? 'Croissantok és szendvicsek' : 'Croissants and sandwiches',
+        note: isHu ? 'A kínálat a helyszínen változhat.' : 'Selection may vary in-store.',
         items: [
-          { name: 'Earl Grey', description: 'Bergamot tea with a refined aroma.', price: '4.90' },
-          { name: 'Jasmine Green', description: 'Light, fragrant, and calming.', price: '4.70' },
-          { name: 'Mint Infusion', description: 'Fresh mint with soothing finish.', price: '4.60' },
+          { name: isHu ? 'Vajas croissant' : 'Butter croissant', description: '', price: '600' },
+          { name: isHu ? 'Magvas barna croissant' : 'Brown seed croissant', description: '', price: '600' },
+          { name: isHu ? 'Croissant lekvárral' : 'Croissant with jam', description: '', price: '800' },
+          { name: isHu ? 'Croissant vajjal' : 'Croissant with butter', description: '', price: '800' },
+          { name: isHu ? 'Érleltsonkás croissant szendvics' : 'Aged ham croissant sandwich', description: 'croissant, sonka, mozzarella, ricotta, rukkola', price: '1200' },
+          { name: isHu ? 'Szalámis croissant szendvics' : 'Salami croissant sandwich', description: 'croissant, szalámi, sajtkrém, saláta', price: '1200' },
+          { name: isHu ? 'Prágai / pulykasonkás croissant szendvics' : 'Prague / turkey ham croissant', description: 'croissant, sonka, sajtkrém, saláta', price: '1200' },
         ],
       },
       {
-        id: 'desserts',
-        title: 'Desserts',
-        subtitle: 'Made in-house.',
-        note: 'Pair your drink with something sweet.',
+        id: 'eggs',
+        title: isHu ? 'Tojásételek' : 'Egg dishes',
+        subtitle: isHu ? 'Friss reggeli fogások' : 'Fresh breakfast dishes',
+        note: isHu ? 'A legtöbb étel két méretben kérhető.' : 'Most dishes are available in two sizes.',
         items: [
-          { name: 'Cheesecake', description: 'Creamy, tangy, perfectly chilled.', price: '6.90' },
-          { name: 'Chocolate Torte', description: 'Deep cocoa layers with a soft bite.', price: '7.20' },
-          { name: 'Cinnamon Roll', description: 'Warm spice, buttery glaze.', price: '5.90' },
-          { name: 'Seasonal Cake', description: 'Rotating selection of house specials.', price: '7.50' },
+          { name: 'Ham & Eggs', description: '', price: '1400 / 1600' },
+          { name: 'Bacon & Eggs', description: '', price: '1400 / 1600' },
+          { name: isHu ? 'Sajtos omlett' : 'Cheese omelet', description: '', price: '1400 / 1600' },
+          { name: isHu ? 'Sonkás omlett' : 'Ham omelet', description: '', price: '1400 / 1600' },
+          { name: isHu ? 'Kecskesajtos-sonkás omlett' : 'Goat cheese & ham omelet', description: '', price: '1400 / 1600' },
+          { name: isHu ? 'Lazacos rántotta' : 'Salmon scrambled eggs', description: '', price: '2500' },
+          { name: isHu ? 'Tükörtojás / rántotta / omlett' : 'Fried egg / scrambled egg / omelet', description: '', price: '1200 / 1400' },
+          { name: isHu ? 'Klasszikus bundás kenyér' : 'Furry bread', description: isHu ? 'fűszeres tejföl' : 'spicy sour cream', price: '1600' },
+          { name: isHu ? 'Töltött bundás kenyér' : 'Stuffed furry bread', description: isHu ? 'sajt, sonka, fűszeres tejföl' : 'cheese, ham, spicy sour cream', price: '1800' },
+          { name: isHu ? 'Labor reggeli' : 'Lab breakfast', description: 'sonka, bacon, gomba, hagyma, paradicsom, 3 tükörtojás', price: '2000' },
+          { name: isHu ? 'Angol reggeli' : 'English breakfast', description: 'bacon, tojás, bab, kolbász, sonka', price: '3000' },
+          { name: isHu ? 'Házikolbász sütve' : 'Fried homemade sausage', description: 'mustár, saláta, bab', price: '1800' },
+          { name: isHu ? 'Debreceni páros' : 'Fried debreceni', description: 'mustár, saláta, bab', price: '1800' },
+        ],
+      },
+      {
+        id: 'sandwich',
+        title: isHu ? 'Grillezett szendvicsek' : 'Grilled sandwiches',
+        subtitle: isHu ? 'Ciabatta, bagel, bruschetta' : 'Ciabatta, bagel, bruschetta',
+        note: isHu ? 'Népszerű szendvics és bagel kínálat.' : 'Popular sandwich and bagel options.',
+        items: [
+          { name: isHu ? 'Lazacos ciabatta' : 'Salmon ciabatta', description: 'ricotta, füstölt lazac, kapor, rukkola', price: '2000' },
+          { name: isHu ? 'Libamájas ciabatta' : 'Goose liver ciabatta', description: 'házi libamáj zsírjában, paprika, saláta', price: '2500' },
+          { name: isHu ? 'Pulykamellsonkás ciabatta' : 'Turkey breast ciabatta', description: 'füstölt mozzarella, saláta, paradicsom, majonéz', price: '1800' },
+          { name: isHu ? 'Érleltsonkás ciabatta' : 'Aged ham ciabatta', description: 'érlelt olasz sonka, mozzarella, paradicsom', price: '1800' },
+          { name: isHu ? 'Füstölt marhahúsos ciabatta' : 'Smoked beef ciabatta', description: 'sajt, saláta, párolt káposzta', price: '2500' },
+          { name: isHu ? 'Füstölt csirkés ciabatta' : 'Smoked chicken ciabatta', description: 'sajt, saláta, paradicsom, majonéz', price: '2500' },
+          { name: 'Bruschetta (paradicsomos)', description: '', price: '1400' },
+          { name: 'Bruschetta (mozzarellás)', description: '', price: '1600' },
+          { name: 'Rántottás bagel', description: 'sonka, mozzarella, sajtkrém, saláta, paradicsom', price: '1600' },
+          { name: 'Bagel & Eggs', description: 'bacon, tükörtojás, saláta, vöröskáposzta, rukkola', price: '1600' },
+          { name: isHu ? 'Lazacos bagel' : 'Salmon bagel', description: 'füstölt lazac, ricotta, kapor, uborka, rukkola', price: '1800' },
+          { name: isHu ? 'Pulykás bagel' : 'Turkey ham bagel', description: 'füstölt mozzarella, paradicsom, saláta, majonéz', price: '1400' },
+        ],
+      },
+      {
+        id: 'drinks',
+        title: isHu ? 'Frissítők' : 'Cold drinks',
+        subtitle: isHu ? 'Üdítők és gyümölcslevek' : 'Sodas and juices',
+        note: isHu ? 'Hideg italok, szezonális kínálattal.' : 'Cold drinks with seasonal options.',
+        items: [
+          { name: isHu ? 'Szódás málna / citrom' : 'Soda raspberry / lemon', description: '', price: '1200' },
+          { name: isHu ? 'Narancs limonádé' : 'Orange lemonade', description: '', price: '1600' },
+          { name: isHu ? 'Jeges friss gyümölcslé' : 'Iced fresh fruit juice', description: '', price: '800' },
+          { name: isHu ? 'Üveg friss szóda 0.7L' : 'Bottled fresh soda 0.7L', description: '', price: '1200' },
+          { name: isHu ? 'Single origin filter kávé' : 'Single origin filter coffee', description: '', price: '1400' },
+          { name: isHu ? 'Cold brew (limitált)' : 'Cold brew (limited)', description: '', price: '1000' },
         ],
       },
     ],
-    [],
+    [isHu],
   );
 
   const [activeId, setActiveId] = useState(categories[0].id);
@@ -82,9 +126,13 @@ export default function MenuSection() {
           viewport={{ once: true, amount: 0.2 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-6xl font-serif tracking-wide text-earth-50">Menu</h2>
+          <h2 className="text-4xl md:text-6xl font-serif tracking-wide text-earth-50">
+            {isHu ? 'Menü' : 'Menu'}
+          </h2>
           <p className="mt-3 text-earth-100/70 max-w-2xl mx-auto">
-            Espresso, coffee, tea, and desserts — curated for a dark, cozy kind of comfort.
+            {isHu
+              ? 'A képeken küldött Kávélabor menü alapján feltöltve.'
+              : 'Menu filled based on the provided Kávélabor menu photos.'}
           </p>
         </motion.div>
 
@@ -120,7 +168,7 @@ export default function MenuSection() {
                   <div className="text-earth-100/65 text-sm leading-relaxed mt-1">{item.description}</div>
                 </div>
                 <div className="text-earth-50 font-serif text-[18px] tracking-tight shrink-0">
-                  €{item.price}
+                  {item.price} Ft
                 </div>
               </motion.div>
             ))}
@@ -142,10 +190,12 @@ export default function MenuSection() {
 
               <div className="mt-7 rounded-2xl border border-white/10 bg-black/30 p-5">
                 <div className="text-[11px] tracking-widest uppercase font-semibold text-earth-50/70">
-                  Pairing tip
+                  {isHu ? 'Tipp' : 'Pairing tip'}
                 </div>
                 <p className="mt-2 text-earth-100/65 leading-relaxed text-sm">
-                  Ask for today’s pairing recommendation at the counter.
+                  {isHu
+                    ? 'Kérj ajánlást a pultnál az adott napi párosításokra.'
+                    : 'Ask for today’s pairing recommendation at the counter.'}
                 </p>
               </div>
             </div>

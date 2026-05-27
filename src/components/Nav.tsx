@@ -21,15 +21,13 @@ export default function Nav() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-12 py-4 bg-black/50 backdrop-blur-xl border-b border-white/10"
     >
-      <a
-        href="#home"
-        onClick={() => setOpen(false)}
-        className="flex items-center gap-2 group cursor-pointer"
-      >
+      <a href="#home" onClick={() => setOpen(false)} className="flex items-center gap-2 group cursor-pointer">
         <div className="flex flex-col items-center">
           <Leaf className="w-8 h-8 text-earth-700/90 group-hover:text-sage-200 transition-colors duration-300" />
-          <span className="font-serif font-semibold text-xl tracking-widest text-earth-50 mt-1 uppercase">Lumina</span>
-          <span className="text-[0.5rem] tracking-[0.2em] font-sans text-earth-100/60 uppercase">Cafe • Cake • Brunch</span>
+          <span className="font-serif font-semibold text-xl tracking-widest text-earth-50 mt-1 uppercase">Kávélabor</span>
+          <span className="text-[0.5rem] tracking-[0.2em] font-sans text-earth-100/60 uppercase">
+            Specialty Coffee • Zalaegerszeg
+          </span>
         </div>
       </a>
 
@@ -46,7 +44,7 @@ export default function Nav() {
             </li>
           ))}
 
-          <div className="flex items-center gap-2 border-l border-white/10 pl-6">
+          <div className="hidden items-center gap-2 border-l border-white/10 pl-6">
             <button
               onClick={() => setLang('HU')}
               className={`font-medium px-2 py-1 rounded-md text-[10px] tracking-widest uppercase border shadow-sm transition-all ${
@@ -100,7 +98,7 @@ export default function Nav() {
                   {link.label}
                 </a>
               ))}
-              <div className="px-4 py-3 border-t border-white/10 flex gap-2">
+              <div className="hidden px-4 py-3 border-t border-white/10 flex gap-2">
                 <button
                   onClick={() => {
                     setLang('HU');

@@ -13,7 +13,8 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
   
-  const { t, lang } = useLanguage();
+  const { t, lang, setLang } = useLanguage();
+  const isHu = lang === 'HU';
 
   // Scrub the video directly from scroll progress:
   // - scroll down => progress increases => time moves forward
@@ -32,9 +33,28 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
-      className="scroll-mt-24 relative w-full h-[140svh] overflow-hidden bg-black text-white"
+      className="scroll-mt-24 relative w-full h-[100svh] overflow-hidden bg-black text-white"
     >
       <div className="sticky top-0 h-[100svh] w-full">
+        <div className="absolute left-4 top-4 z-20 flex items-center gap-2">
+          <button
+            onClick={() => setLang('HU')}
+            className={`px-2 py-1 rounded-md text-[10px] tracking-widest uppercase border transition-all ${
+              isHu ? 'text-earth-50 bg-white/10 border-white/25' : 'text-earth-50/70 border-white/10 bg-black/20'
+            }`}
+          >
+            HU
+          </button>
+          <button
+            onClick={() => setLang('EN')}
+            className={`px-2 py-1 rounded-md text-[10px] tracking-widest uppercase border transition-all ${
+              !isHu ? 'text-earth-50 bg-white/10 border-white/25' : 'text-earth-50/70 border-white/10 bg-black/20'
+            }`}
+          >
+            EN
+          </button>
+        </div>
+
         {/* Video background (fixed within the hero via sticky) */}
         <div className="absolute inset-0">
           <video
@@ -73,11 +93,11 @@ export default function Hero() {
             className="flex flex-col items-center text-center bg-white/5 p-10 md:p-14 lg:p-16 rounded-3xl backdrop-blur-xl border border-white/10 shadow-[0_30px_80px_-35px_rgba(0,0,0,0.9)] max-w-3xl"
           >
             <div className="px-6 py-2 mb-6 bg-black/35 backdrop-blur-md rounded-full border border-white/20 text-white text-[10px] tracking-[0.2em] font-bold uppercase shadow-sm">
-              Lumina Cafe
+              Kávélabor
             </div>
 
             <h1 className="text-5xl md:text-7xl font-serif mb-6 tracking-tight leading-tight drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-              Lumina Cafe
+              Kávélabor
               <br />
               <span className="text-earth-100/80 italic">{t('hero.subtitle')}</span>
             </h1>
@@ -91,7 +111,7 @@ export default function Hero() {
                 href="#menu"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition-colors font-semibold tracking-widest text-[11px] uppercase"
               >
-                {lang === 'HU' ? 'Menü megtekintése' : 'View Menu'}
+                {isHu ? 'Menü megtekintése' : 'View Menu'}
               </a>
             </div>
           </motion.div>
