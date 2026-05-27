@@ -32,25 +32,31 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
-      className="scroll-mt-24 relative w-full h-[130vh] overflow-hidden bg-black text-white"
+      className="scroll-mt-24 relative w-full h-[140svh] overflow-hidden bg-black text-white"
     >
-      <div className="sticky top-0 h-screen w-full">
+      <div className="sticky top-0 h-[100svh] w-full">
         {/* Video background (fixed within the hero via sticky) */}
         <div className="absolute inset-0">
           <video
             ref={videoRef}
             src={coffeeVideo}
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
             muted
             playsInline
+            autoPlay
+            loop
             controls={false}
+            disablePictureInPicture
             preload="auto"
             onLoadedMetadata={(e) => {
               const videoElement = e.currentTarget;
               if (videoElement.duration && !Number.isNaN(videoElement.duration)) {
                 setDuration(videoElement.duration);
                 videoElement.currentTime = 0;
-                videoElement.pause();
+                // Mobile Safari often won't paint the first frame until playback starts once.
+                // This "kick" is muted + inline, so it should be allowed, then we pause
+                // because we scrub via scroll.
+                void videoElement.play().then(() => videoElement.pause()).catch(() => {});
               }
             }}
           />
